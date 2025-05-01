@@ -1,2 +1,59 @@
 # franka_description_URDF
 A package of franka_description with URDF files of the Panda robot.
+
+## About
+
+This package ["franka_description" (teng4)](https://github.com/teng4/franka_description) is an improved version based on the original ["franka_description" (official)](https://github.com/frankaemika/franka_description), the main improvements are all related to `URDF` files, including,
+
+- A new `urdfs` folder is newly generated with the `URDF` files inside. For the detailed procedures of generating these URDF files, please see the post ["How To convert [xacro] to [urdf] for Franka Emika Panda robot?"](https://teng4.github.io/posts/20250416/).
+- Two `.rviz` files are generated in the folder `rviz` for ROS1 (*noetic, Ubuntu 20.04.6 LTS*).
+- For the application of the `URDF` file, please see this [demo video](https://youtu.be/asSwOhIVADU).
+
+## How to use
+
+- Download the package ["franka_description_URDF"](https://github.com/teng4/franka_description_URDF)
+- Rename package name from `"franka_description_URDF"` to `"franka_description"` (strongly suggested).
+- Copy the package `"franka_description"` into a `catkin_ws/src` as an independent package.
+- Compile the `catkin_ws` via `catkin_make` (There should be no compiling error).
+- Tested ok at Ubuntu 20.04.6 LTS with ROS noetic.
+
+## Notes
+
+- The original ["franka_description" (official)](https://github.com/frankaemika/franka_description) may have compiling error when run `catkin_make`, that is why this package was created. Therefore, alternatively, you can create your own new package inside your `catkin_ws`, and copy-paste all other folder files into your package.
+- `teng4_dummy.txt` (inside the folders of `meshes` and `include`) was for the purpose of uploading the files onto GitHub only, you can delete them if they prevent you compiling the package correctly with `catkin_make`. Otherwise, you can just leave them unattended.
+- You can also copy-paste the folders with the same name from the official ones ["franka_description" (official)](https://github.com/frankaemika/franka_description). Note that `rviz` and `urdfs` contain unique files inside that you need to keep in order to show the panda robot in rviz.
+
+## Commands to be included in your launch file
+
+```
+<launch> 
+  <!-- load the controllers -->  
+  <node name="omni_panda_cpp" pkg="cleftikpkg" type="omni_panda_cpp" output="screen"> 
+  </node>
+
+  <!-- Launch Robot 1 -->
+  <group ns="panda1">
+    <param name="robot_description" command="cat $(find franka_description)/urdfs/fr3_franka_hand_teng4modified1ok.urdf" /> 
+    <node pkg="robot_state_publisher" type="robot_state_publisher" name="robot_state_publisher" />
+  </group>
+
+  <node name="rviz" pkg="rviz" type="rviz" args="-d $(find franka_description)/rviz/visualize_franka_teng4modified1ok.rviz" required="true" >
+  </node>  
+</launch>
+```
+
+## Commands to create a new package in catkin_ws
+
+```
+$ pwd  #Prints the current working directory
+$ cd ~/catkin_ws/src
+$ catkin_create_pkg teng4pkg std_msgs rospy roscpp
+$ cd ~/catkin_ws
+$ catkin_make
+$ source devel/setup.bash
+$ echo $ROS_PACKAGE_PATH
+```
+
+# Franka Description
+
+Go to the original README of ["franka_description" (official)](https://github.com/frankaemika/franka_description).
