@@ -14,7 +14,7 @@ This package ["franka_description_URDF"](https://github.com/teng4/franka_descrip
 ## How to use
 
 - Download the package ["franka_description_URDF"](https://github.com/teng4/franka_description_URDF)
-- Rename package from `"franka_description_URDF"` to `"franka_description"` (required if you use the launch file cmd provided in this post).
+- Rename package from `"franka_description_URDF"` to `"franka_description"` (**required**).
 - Copy the package `"franka_description"` into a `catkin_ws/src` as an independent package.
 - Compile the `catkin_ws` via `catkin_make` (There should be no compiling errors).
 - Tested OK on Ubuntu 20.04.6 LTS with ROS noetic.
