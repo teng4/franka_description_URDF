@@ -3,7 +3,7 @@ A package of franka_description with URDF files of the Panda robot.
 
 ## About
 
-This package ["franka_description_URDF")](https://github.com/teng4/franka_description_URDF) is an improved version based on the original ["franka_description" (official)](https://github.com/frankaemika/franka_description), the main improvements are all related to `URDF` files, including,
+This package ["franka_description_URDF"](https://github.com/teng4/franka_description_URDF) is an improved version based on the original ["franka_description" (official)](https://github.com/frankaemika/franka_description), the main improvements are all related to `URDF` files, including,
 
 - A new `urdfs` folder is newly generated with the `URDF` files inside. For the detailed procedures of generating these URDF files, please see the post ["How To convert [xacro] to [urdf] for Franka Emika Panda robot?"](https://teng4.github.io/posts/20250416/).
 - Two `.rviz` files are generated in the folder `rviz` for ROS1 (*noetic, Ubuntu 20.04.6 LTS*).
